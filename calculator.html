@@ -1,0 +1,271 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<title>JavaSctipt Calculator</title>
+</head>
+<style type="text/css">
+body {
+ background-color: lightblue;
+}
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  overflow: hidden;
+  padding: 20px;
+  background-color: grey;
+}
+* {
+padding: 0;
+margin: 5px;
+text-align: center;
+}
+.calculator {
+width: 350px;
+height: 320px;
+background-color: #c0c0c0;
+box-shadow: 0px 0px 0px 10px #666;
+border: 5px solid black;
+border-radius: 10px;
+}
+.display {
+width: 320px;
+height: 40px;
+text-align: right;
+background-color: black;
+border: 3px solid white;
+font-size: 18px;
+left: 2px;
+top: 2px;
+color: white;
+}
+.btnTop{
+color: white;
+background-color: #6f6f6f;
+font-size: 14px;
+margin: auto;
+width: 50px;
+height: 25px;
+}
+.btnNum {
+color: white;
+background-color: black;
+font-size: 14px;
+margin: auto;
+width: 50px;
+height: 25px;
+}
+h1 {
+  color:white;
+  text-align: left;
+}
+h2 {
+  color:black;
+   text-align: left;
+}
+.align {
+ text-align: left;
+}
+.footer {
+  grid-area: footer;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+.fa {
+  padding: 15px;
+text-align: center;
+  margin: 4px 2px;
+  font-size: 25px;
+  width: 40px;
+  text-decoration: none;
+}
+.fa-twitter {
+  color: black;
+}
+.fa-linkedin {
+  color: black;
+}
+.fa-instagram {
+  color: black;
+}
+.fa-youtube {
+  color: black;
+}
+.fa:hover {
+    opacity: 0.6;
+}
+@media screen and (max-width: 800px) {
+    .table, .footer  {
+   width:100%;
+  }
+}
+</style>
+<meta name="google-site-verification" content="HR5Hv7pYAstW0vV-iv74-a7Ff1AvGQKvmtAAeNlqdKQ" />
+<body>
+<div class="sticky">
+<h1>Calculator.js</h1>
+</div>
+<h2><b>Scientific Calculator</b></h2>
+<p class="align">This is an online javascript scientific calculator. You can click the buttons or</br> type to perform calculations as you would on a physical calculator</p><br><br>
+<form name="sci-calc">
+<table class="calculator" cellspacing="0" cellpadding="1">
+<tr>
+<td colspan="5"><input type="text" class="display" name="displayResult" value="0" size="28" maxlength="25" id="displayResult"></td>
+</tr>
+          <tr>
+            <td><input type="button" class="btnTop" name="btnTop" value="C" onclick="form.displayResult.value= 0 "></td>
+            <td><input type="button" class="btnTop" name="btnTop" value="<--" onclick="deleteChar(form.displayResult)"></td>
+            <td><input type="button" class="btnTop" name="logb" value="ln" onClick="form.displayResult.value = Math.log(form.displayResult.value)" ></td>
+            <td><input type="button" class="btnTop" name="logb" value="log" onClick="form.displayResult.value = Math.log10(form.displayResult.value)" ></td>
+            <td><input type="button" class="btnTop" value="=" onClick="displayResult.value=eval(displayResult.value) "></td> 
+                </tr>
+         <tr>
+          <td><input type="button" class="btnNum"  name="b7" value="7" onClick="calcNumbers(b7.value) "></td>
+	  <td><input type="button" class="btnNum"  name="b8" value="8" onClick="calcNumbers(b8.value)"></td>
+	  <td><input type="button" class="btnNum"  name="b9" value="9" onClick="calcNumbers(b9.value)"></td>
+	  <td><input type="button" class="btnTop" name="addb" value="+" onClick="calcNumbers(addb.value)"></td>
+          <td><input type="button" class="btnTop" name="btnTop" value="x3" onClick="cube(form)"></td>
+     
+        <tr>
+	  <td><input type="button" class="btnNum"  name="b4" value="4" onClick="calcNumbers(b4.value)"></td>
+	  <td><input type="button" class="btnNum"  name="b5" value="5" onClick="calcNumbers(b5.value)"></td>
+	  <td><input type="button" class="btnNum"  name="b6" value="6" onClick="calcNumbers(b6.value)"></td>
+	  <td><input type="button" class="btnTop" name="subb" value="-" onClick="calcNumbers(subb.value)"></td>
+          <td><input type="button" class="btnTop" name="btnTop" value="x2" onClick="square(form)"></td>
+                             
+	    </tr>
+
+       <tr>
+	  <td><input type="button" class="btnNum"  name="b1" value="1" onClick="calcNumbers(b1.value)"></td>
+	  <td><input type="button" class="btnNum"  name="b2" value="2" onClick="calcNumbers(b2.value)"></td>
+	  <td><input type="button" class="btnNum"  name="b3" value="3" onClick="calcNumbers(b3.value)"></td>
+	  <td><input type="button" class="btnTop" name="mulb" value="*" onClick="calcNumbers(mulb.value)"></td>
+          <td><input type="button"class="btnTop" name="sqrt" value="&radic;" onClick="form.displayResult.value = Math.sqrt(form.displayResult.value)"</td>
+	     </tr>
+   
+       <tr>
+	  <td><input type="button" class="btnTop" name="potb" value="." onClick="calcNumbers(potb.value)"></td>
+	  <td><input type="button" class="btnNum"  name="b0" value="0" onClick="calcNumbers(b0.value)"></td>
+          <td><input type="button" class="btnTop" name="btnTop" value="&#177" onClick="form.displayResult.value = changeSign(form.displayResult.value)" ></td>
+	  <td><input type="button" class="btnTop" name="divb" value="/" onClick="calcNumbers(divb.value)"></td> 
+          <td><input type="button" class="btnTop" name="modulsb" value="%" onClick="calcNumbers(modulsb.value)"></td>
+          
+		</tr>
+        <tr>
+             <td><input type="button" class="btnTop" name="randomb" value="RND" onClick="form.displayResult.value = Math.random() "></td>
+             <td><input type="button" class="btnTop" name="comb" value="," onClick="calcNumbers(comb.value)" ></td>
+             <td><input type="button" class="btnTop" name="btnTop" value="&#960;" onClick="addChar(form.displayResult, '3.14159265359' )"></td>
+             <td><input type="button" class="btnTop" name="btnTop" value="(" onClick="addChar(form.displayResult, '(' ) "></td>
+             <td><input type="button" class="btnTop" name="btnTop" value=")" onClick="addChar(form.displayResult, ')' )"></td>
+                 </tr>
+       <tr>
+         <td><input type="button" class="btnTop" name="sinb" value="Sin" onClick="sin(form)" ></td>
+         <td><input type="button" class="btnTop" name="cosb" value="Cos" onClick="form.displayResult.value = Math.cos(form.displayResult.value)" ></td>
+         <td><input type="button" class="btnTop" name="tanb" value="tan" onClick="form.displayResult.value = Math.tan(form.displayResult.value)" ></td>
+         <td><input type="button" class="btnTop" name="btnTop" value="x!" onClick="factorial(form)"></td>
+         <td><input type="button" class="btnTop" name="absb" value="abs" onClick="form.displayResult.value = Math.abs(form.displayResult.value)"</td>
+    </tr>
+          <tr>
+            <td><input type="button" class="btnTop" name="btnTop" value="sin-1" onClick="sine(form)"></td>
+            <td><input type="button" class="btnTop" name="btnTop" value="cos-1" onClick="cos(form)"></td>
+            <td><input type="button" class="btnTop" name="btnTop" value="tan-1" onClick="tan(form)"></td>
+            <td><input type="button" class="btnTop" name="rundb" value="round" onClick="form.displayResult.value = Math.round(form.displayResult.value)"</td>
+          <td><input type="button" class="btnTop" name="expb" value="exp" onClick="form.displayResult.value = Math.exp(form.displayResult.value)"</td>
+         </tr>
+</table>
+</form>
+<script>
+
+function calcNumbers(result){
+		var target=document.getElementById("displayResult");
+		var intialValue=target.value;
+
+		if(intialValue==0){
+			target.value=result;
+		}
+		else{
+			target.value=intialValue+result;
+		}
+			
+	}
+
+function deleteChar(input) {
+	input.value = input.value.substring(0, input.value.length - 1)
+       }
+function addChar(input, character) {
+	if(input.value == null || input.value == "0")
+		input.value = character
+	else
+		input.value += character
+}
+
+function square(form) {
+      form.displayResult.value = eval(form.displayResult.value) * eval(form.displayResult.value)
+}
+
+function cube(form) {
+      form.displayResult.value = eval(form.displayResult.value) * eval(form.displayResult.value) * eval(form.displayResult.value)
+}
+
+function factorial(form) {
+       if(form.displayResult.value == 0 || form.displayResult.value == 1) 
+        form.displayResult.value = 1
+    else {
+      for(var i = form.displayResult.value-1 ; i >= 1; i--) {
+         form.displayResult.value  = form.displayResult.value * i
+         console.log(form.displayResult.value);
+       }
+}
+}
+function sin(form) {
+      form.displayResult.value = Math.sin(form.displayResult.value)
+}
+
+function sine(form) {
+      form.displayResult.value = Math.sin( eval(form.displayResult.value) * Math.PI / 180 )
+}
+function cos(form) {
+      form.displayResult.value = Math.cos( eval(form.displayResult.value) * Math.PI / 180 )
+}
+function tan(form) {
+      form.displayResult.value = Math.tan( eval(form.displayResult.value) * Math.PI / 180 ) 
+}
+
+function differn(form) {
+      form.displayResult.value = coeff(form.displayResult.value) * power(form.displayResult.value) * pow(value, power-1)
+}
+function squcalc(form) {
+      form.displayResult.value = Math.sqrt(form.displayResult.value) 
+}
+function changeSign(input) {
+  var newData;
+	if(input.substring(0, 1) == "-")
+		newData = input.substring(1, input.length)
+	else
+		newData = "-" + input
+
+  return newData
+}
+</script>
+<div align="center">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>
+<!-- Homepage Leaderboard -->
+<ins class="adsbygoogle"
+style="display:inline-block;width:728px;height:90px"
+data-ad-client="ca-pub-1234567890123456"
+data-ad-slot="1234567890"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+ <div class="footer">
+    <p>For any query?</P>
+<P>CONTACT US!</p>
+<a href="https://twitter.com/Manisha41290517?t=Nk97V8YFxb4kzOKfc5ey2A&s=09" class="fa fa-twitter"> </a>
+<a href="https://www.linkedin.com/in/manisha-kumari-440029196" class="fa fa-linkedin"> </a>
+<a href="https://instagram.com/_positive_world__?utm_medium=copy_link" class="fa fa-instagram"> </a>
+<a href="https://youtube.com/channel/UClYdgqpFWSdNaGsCRSM_apA" class="fa fa-youtube"> </a>
+  </div>
+</body>
+</html>
